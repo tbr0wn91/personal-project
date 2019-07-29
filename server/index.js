@@ -26,7 +26,8 @@ app.use(session({
 
 app.post(`/auth/login`, login)
 app.post(`/auth/register`, register)
-// app.get(`/auth/user_session`)
+app.get(`/auth/logout`, logout)
+app.get(`/auth/user_session`, userSession)
 
 
 app.listen(SERVER_PORT, () => console.log(`listening on server port ${SERVER_PORT}`))

@@ -52,4 +52,11 @@ module.exports = {
             }
         })
     },
+    logout: (req, res, next) => {
+        req.session.destroy();
+        res.status(200).send([]);
+    },
+    userSession: (req, res, next) => {
+        res.status(200).send(req.session.user)
+    }
 }
