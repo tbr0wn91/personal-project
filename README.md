@@ -1,68 +1,115 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+***Backend***
 
-## Available Scripts
+***dependencies***
+- express
+- massive
+- dotenv
+- express-session 
+- bcrypt
 
-In the project directory, you can run:
+***Backend file structure***
+- server/
+  - index.js
+  - middlewares
+    - middleware.js
+  - controller
+       - authController.js
+       - playlistController.js
 
-### `npm start`
+***EndPoints***
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+auth endpoints
+- login: => /api/login
+- register => /api/register
+- logout => /api/logout
+- userSession => /api/user_session
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+playlist endpoints
 
-### `npm test`
+- getAllUsers = >/api/users
+- getAllUserPlaylists => /api/user_playlists
+- createPlaylist => /api/create_playlist
+- addSong => /api/add_song
+ -deleteSong => /api/ delete_song
+- deletePlaylist => /api/ delete_playlist
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+***Database***
 
-### `npm run build`
+- Users
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```sql
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+create table Users(
+user_id serial primary key,
+username varchar(32) not null,
+email text not null,
+password text not null
+);
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+create table Playlist (
+playlist_id serial primary key,
+playlist_name varchar(40) not null,
+user_id integer references Users(user_id)
 
-### `npm run eject`
+);
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+create table Songs(
+song_id serial primary key,
+name varchar(200) not null,
+artist varchar(200) not null,
+playlist_id integer references Playlist(playlist_id)
+);
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+create table Songs_In_Playlist(
+playlist_song_id serial primary key
+song_id integer references Songs(song_id)
+playlist_id integer references Playlist(playlist_id
+);
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+***FrontEnd***
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+***dependencies***
 
-## Learn More
+install and require:
+- axios
+- react-router-dom(BrowserRouter)
+- redux
+- react-redux
+- node-sass
+- http-proxy-middleware
+- redux-promise-middleware
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+***Routes***
+- Home => / => Login.js
+- Login => Login/Register.js
+- Profile=> / profile => Profile.js
+- Playlist =>/CreatePlaylist => CreatePlaylist.js
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+***Frontend File Structure***
 
-### Code Splitting
+- src/
+  - components
+   - Home
+     - Login.js(view 1)
+     - Login.css/ scss
+     - Register.js(view 2)
+     - Register.css / scss
+    - Profile
+        - Profile.js
+        - Profile.css/ scss
+    - Playlist
+      - CreatePlaylist.js(view 3)
+      - CreatePlaylist.css / scss
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+  - App.js
+  - index.js
+  - reset.css
+  - setupProxy.js
+  - redux
+    - store.js
+    - reducer.js
 
-### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-### Making a Progressive Web App
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
