@@ -85,6 +85,7 @@ install and require:
 - Login => Login/Register.js
 - Profile=> / profile => Profile.js
 - Playlist =>/CreatePlaylist => CreatePlaylist.js
+- DisplayPlaylist => /CreatePlaylist/DisplayPlaylist
 
 ***Frontend File Structure***
 
@@ -101,6 +102,9 @@ install and require:
     - Playlist
       - CreatePlaylist.js(view 3)
       - CreatePlaylist.css / scss
+    - DisplayPlaylist
+      - DisplayPlaylist.js
+      - DisplayPlaylist.css/scss
 
   - App.js
   - index.js
