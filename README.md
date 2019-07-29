@@ -19,10 +19,10 @@
 ***EndPoints***
 
 auth endpoints
-- login: => /api/login
-- register => /api/register
-- logout => /api/logout
-- userSession => /api/user_session
+- login: => /auth/login
+- register => /auth/register
+- logout => /auth/logout
+- userSession => /auth/user_session
 
 playlist endpoints
 
@@ -30,6 +30,7 @@ playlist endpoints
 - getAllUserPlaylists => /api/user_playlists
 - createPlaylist => /api/create_playlist
 - addSong => /api/add_song
+- editTitle => /api/ change_title
  -deleteSong => /api/ delete_song
 - deletePlaylist => /api/ delete_playlist
 
@@ -57,7 +58,7 @@ create table Songs(
 song_id serial primary key,
 name varchar(200) not null,
 artist varchar(200) not null,
-playlist_id integer references Playlist(playlist_id)
+
 );
 
 create table Songs_In_Playlist(
@@ -82,10 +83,10 @@ install and require:
 
 ***Routes***
 - Home => / => Login.js
-- Login => Login/Register.js
+- Login => /Register.js
 - Profile=> / profile => Profile.js
 - Playlist =>/CreatePlaylist => CreatePlaylist.js
-- DisplayPlaylist => /CreatePlaylist/DisplayPlaylist
+- DisplayPlaylist => /DisplayPlaylist
 
 ***Frontend File Structure***
 
