@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios'
+import {Link} from 'react-router-dom';
+import './Login.scss'
 
  export default class Login extends Component {
     constructor(props){
@@ -43,7 +45,7 @@ import axios from 'axios'
                 <input placeholder='email' name='email' type='email' onChange={e => this.universalChangeHandler(e.target.name, e.target.value)} />
                 <input placeholder='password' name='password' type='password' onChange={e => this.universalChangeHandler(e.target.name, e.target.value)}/>
                 <button onClick={this.login}>Login</button>
-                <button>Register</button>
+                <Link exact to='/Register'><button>Register</button></Link>
             </div>
         )
     }

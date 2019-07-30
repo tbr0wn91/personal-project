@@ -12,6 +12,7 @@ module.exports = {
             res.status(200).send({message:`no user found with that email. Please register as a new user`})
         }
         else {
+            console.log(`this is the user`,foundUser)
             const matchedPasswords = await bcrypt.compare(password, foundUser[0].password).catch(err => console.log(err));
 
             if(matchedPasswords){
