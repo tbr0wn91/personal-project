@@ -1,6 +1,7 @@
 import React from 'react';
 import {Route, Switch, NavLink} from 'react-router-dom';
 import Login from './components/Home/Login';
+import Register from './components/Home/Register'
 
 import './App.css';
 
@@ -20,11 +21,9 @@ function App() {
 
     <Switch>
       <Route exact path="/" component={Login} />
-      <Route path="/Register" render={() =>{
-        return <div>This is the Register path</div>
-      }}/>
+      <Route path="/Register"component={Register}/>
       <Route path="/Profile" render={() =>{
-        return <div>This is the Profile path</div>
+        return <div>This is the CreatePlaylist path</div>
       }}/>
       <Route path="/CreatePlaylist" render={() =>{
         return <div>This is the CreatePlaylist path</div>
