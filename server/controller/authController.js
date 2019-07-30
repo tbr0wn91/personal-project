@@ -8,8 +8,8 @@ module.exports = {
 
         const foundUser = await db.select_user(email)
         .catch(err => console.log(err))
-        if(!foundUser.length){
-            res.status(401).send(`no user found with that email. Please register as a new user`)
+        if(!foundUser){
+            res.status(200).send({message:`no user found with that email. Please register as a new user`})
         }
         else {
             const matchedPasswords = await bcrypt.compare(password, foundUser[0].password).catch(err => console.log(err));
@@ -22,7 +22,7 @@ module.exports = {
                 }
                 res.status(200).send(req.session.user)
             } else {
-                res.status(403).send(`Incorrect password`)
+                res.status(200).send({message:`Incorrect password`})
             }
         }
     },
