@@ -1,0 +1,18 @@
+@import '../../variables.scss';
+
+
+.profile-container{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .content{
+        height: 60vh;
+        width: 60vw;
+        background-color: $primarycolor;
+        // justify-content: center;
+        // align-items: center;
+    }
+
+}
