@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import axios from 'axios'
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux'
+import {getUser} from '../../redux/reducer';
 import './Login.scss'
 
- export default class Login extends Component {
+class Login extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -11,10 +13,11 @@ import './Login.scss'
             password: ''
         }
 
-        this.login = this.login.bind(this);
+        
     }
 
-    login(){
+    login(e){
+        e.preventDefault();
         const {email, password} = this.state
         axios.post('/auth/login', {email: email, password: password})
         .then(res => {
@@ -23,10 +26,8 @@ import './Login.scss'
                 alert(res.data.message)
             }
             else {
-                this.setState({
-                    email: res.data.email,
-                    password: res.data.password
-                })
+                this.props.getUser(res.data);
+                this.props.history.push('/Profile');
             }
         })
     }
@@ -47,7 +48,7 @@ import './Login.scss'
                         <input placeholder='password' name='password' type='password' onChange={e => this.universalChangeHandler(e.target.name, e.target.value)}/>
                     </div>
                     <div>
-                        <button onClick={this.login}>Login</button>
+                        <button onClick={(e)=>this.login(e)}>Login</button>
                         <Link exact to='/Register'><button>Register</button></Link>
                     </div>
                 </form>
@@ -55,3 +56,19 @@ import './Login.scss'
         )
     }
 }
+
+
+function mapReduxToProps(reduxState){
+    return reduxState
+}
+
+const mapDispatchToProps = {
+    getUser
+}
+
+const connectInvoked = connect(
+    mapReduxToProps,
+    mapDispatchToProps
+)
+
+export default connectInvoked(Login);

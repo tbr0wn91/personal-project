@@ -23,6 +23,7 @@ import {getUser} from '../../redux/reducer';
         {username: username, password: createPassword, email: email, first_name: firstName, last_name: lastName, picture: picture})
         .then(res => {
             this.props.getUser(res.data);
+            this.props.history.push('/Profile')
         })
     }
 
