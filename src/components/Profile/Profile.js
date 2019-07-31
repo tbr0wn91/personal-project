@@ -8,9 +8,8 @@ import './Profile.scss';
     <div className="profile-container">
         <div className="content">
             <div>
-                <h1>
-                    {props.user.picture}
-                </h1>
+                <img src={props.user.picture} />
+                     
             </div>
             <div>
                 <h1>
@@ -19,12 +18,12 @@ import './Profile.scss';
             </div>
             <div>
                 <h1>
-                    {props.user.FirstName}
+                    {props.user.first_name}
                 </h1>
             </div>
             <div>
                 <h1>
-                    {props.user.LastName}
+                    {props.user.last_name}
                 </h1>
             </div>
             <div>
