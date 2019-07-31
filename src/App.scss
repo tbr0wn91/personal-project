@@ -1,0 +1,21 @@
+@import '../src/variables.scss';
+
+.header-container{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 15vh;
+  width: 100%;
+  background-color: $primarycolor;
+
+  div{
+    margin: 0 50px;
+  }
+  
+ 
+  
+}
+
+span {
+  @include title;
+}

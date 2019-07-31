@@ -41,11 +41,16 @@ import './Login.scss'
         console.log(this.state)
         return(
             <div>
-
-                <input placeholder='email' name='email' type='email' onChange={e => this.universalChangeHandler(e.target.name, e.target.value)} />
-                <input placeholder='password' name='password' type='password' onChange={e => this.universalChangeHandler(e.target.name, e.target.value)}/>
-                <button onClick={this.login}>Login</button>
-                <Link exact to='/Register'><button>Register</button></Link>
+                <form className="login-container">
+                    <div className='inputs'>
+                        <input placeholder='email' name='email' type='email' onChange={e => this.universalChangeHandler(e.target.name, e.target.value)} />
+                        <input placeholder='password' name='password' type='password' onChange={e => this.universalChangeHandler(e.target.name, e.target.value)}/>
+                    </div>
+                    <div>
+                        <button onClick={this.login}>Login</button>
+                        <Link exact to='/Register'><button>Register</button></Link>
+                    </div>
+                </form>
             </div>
         )
     }

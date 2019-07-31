@@ -3,12 +3,13 @@ import {Route, Switch, NavLink} from 'react-router-dom';
 import Login from './components/Home/Login';
 import Register from './components/Home/Register'
 
-import './App.css';
+import './App.scss';
 
 function App() {
   return (
     <div>
-      <header>
+      <header className="header-container">
+        <span>Devify</span>
         <div>
           <NavLink exact to='/' activeClassName='active'>Home</NavLink>
           <NavLink exact to='/Register' activeClassName='active'>Register</NavLink>

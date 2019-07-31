@@ -1,5 +1,38 @@
-// @import "variables.scss";
+@import '../../variables.scss';
 
-// body {
-//     background-image: image('https://cdn.pixabay.com/photo/2014/10/21/02/18/sound-495859__340.jpg')
-// }
+body{
+    background: $background;
+   
+    
+
+   
+}
+
+.login-container{
+    
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    width: 60vh;
+    background-color: $primarycolor;
+    justify-content: center;  
+    align-items: center;
+    margin: 0 auto;
+
+    .inputs{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    input{
+        flex-direction: column;
+        margin: 10px ;
+        border: none;
+        height: 30px;
+        border: solid 2px rgb(65, 220, 225);
+        padding: 5px;
+        
+        
+    }
+}
+
