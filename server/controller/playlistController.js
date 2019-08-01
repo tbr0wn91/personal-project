@@ -40,6 +40,16 @@ module.exports = {
         res.status(200).send(`Your playlist is gone FOREVER!`)
     },
 
+    changePlaylistName: (req, res, next) => {
+        const db = req.app.get('db');
+        const {playlist_name, playlist_id} = req.body;
+
+        db.change_playlist_name([playlist_name, playlist_id])
+        .then(name =>{
+            res.status(200).send(name)
+        }).catch(err => console.log(`Whoops can't do that`))
+    },
+
     getAllUserPlaylists: (req, res, next) => {
 
     }

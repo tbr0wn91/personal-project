@@ -2,7 +2,7 @@ const express = require('express');
 const massive = require('massive');
 const session = require('express-session');
 const { login, logout, register, userSession} = require('./controller/authController')
-const { createPlaylist, addSong, addSongToPlaylist, deleteSongInPlaylist, deletePlaylist, getAllUserPlaylists} = require('./controller/playlistController');
+const { createPlaylist, addSong, addSongToPlaylist, changePlaylistName, deleteSongInPlaylist, deletePlaylist, getAllUserPlaylists} = require('./controller/playlistController');
 require('dotenv').config();
 const app = express();
 const { CONNECTION_STRING, SESSION_SECRET, SERVER_PORT} = process.env;
@@ -37,6 +37,7 @@ app.post(`/api/add_song`, addSong)
 app.post(`/api/song_to_playlist`, addSongToPlaylist)
 app.delete(`/api/delete_song`, deleteSongInPlaylist)
 app.delete(`/api/delete_playlist`, deletePlaylist)
+app.put(`/api/update_playlist_name`, changePlaylistName)
 app.get(`/api/user_playlists`, getAllUserPlaylists)
 
 
