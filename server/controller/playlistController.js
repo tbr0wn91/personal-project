@@ -51,6 +51,11 @@ module.exports = {
     },
 
     getAllUserPlaylists: (req, res, next) => {
+        const db = req.app.get('db')
+        const {user_id} = req.body;
 
+        db.get_user_playlists(user_id).then(playlists => {
+            res.status(200).send(playlists)
+        }).catch(err => console.log(`uh oh couldnt get your playlists`))
     }
 }

@@ -1,0 +1,1 @@
+select * from playlist where user_id = $1;
