@@ -2,6 +2,7 @@ const express = require('express');
 const massive = require('massive');
 const session = require('express-session');
 const { login, logout, register, userSession} = require('./controller/authController')
+const { createPlaylist, addSong, deleteSong, deletePlaylist, getAllUserPlaylists} = require('./controller/playlistController');
 require('dotenv').config();
 const app = express();
 const { CONNECTION_STRING, SESSION_SECRET, SERVER_PORT} = process.env;
@@ -28,6 +29,15 @@ app.post(`/auth/login`, login)
 app.post(`/auth/register`, register)
 app.get(`/auth/logout`, logout)
 app.get(`/auth/user_session`, userSession)
+
+// playlist endpoints
+
+app.post(`/api/create_playlist`, createPlaylist)
+app.put(`/api/add_song`, addSong)
+app.delete(`/api/delete_song`, deleteSong)
+app.delete(`api/delete_playlist`, deletePlaylist)
+app.get(`/api/user_playlists`, getAllUserPlaylists)
+
 
 
 app.listen(SERVER_PORT, () => console.log(`listening on server port ${SERVER_PORT}`))
