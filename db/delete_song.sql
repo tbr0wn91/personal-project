@@ -1,0 +1,1 @@
+delete from songs_in_playlist where playlist_id = $1 and song_id = $2;

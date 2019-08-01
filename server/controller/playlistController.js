@@ -16,7 +16,7 @@ module.exports = {
     },
 
     addSongToPlaylist: async (req, res, next) => {
-        console.log(`hit endpoint`)
+        
         const db = req.app.get('db')
         let {playlist_id, song_id} = req.body;
 
@@ -24,8 +24,12 @@ module.exports = {
         res.status(200).send(songToPlaylist)
     },
 
-    deleteSong: (req, res, next) => {
+    deleteSongInPlaylist: (req, res, next) => {
+        const db = req.app.get('db');
+        let {playlist_id ,song_id} = req.body;
 
+        db.delete_song([playlist_id,song_id])
+        res.status(200).send(`boop`)
     },
 
     deletePlaylist: (req, res, next) => {
