@@ -33,7 +33,7 @@ app.get(`/auth/user_session`, userSession)
 // playlist endpoints
 
 app.post(`/api/create_playlist`, createPlaylist)
-app.put(`/api/add_song`, addSong)
+app.post(`/api/add_song`, addSong)
 app.delete(`/api/delete_song`, deleteSong)
 app.delete(`api/delete_playlist`, deletePlaylist)
 app.get(`/api/user_playlists`, getAllUserPlaylists)

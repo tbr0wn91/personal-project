@@ -1,0 +1,1 @@
+insert into songs_into_playlist

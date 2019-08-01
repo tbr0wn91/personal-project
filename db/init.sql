@@ -37,6 +37,12 @@ create table songs_in_playlist(
     playlist_id integer references playlist(playlist_id)
 );
 
+create table profile(
+    profile_id serial primary key,
+    first_name varchar(32)not null,
+    last_name varchar(32) not null,
+    picture text default
+);
 
 
 -- grabs playlist name and song name and artist and joins it onto one table
