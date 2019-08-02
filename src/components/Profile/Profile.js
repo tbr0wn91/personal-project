@@ -1,5 +1,6 @@
 import React, {Component } from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 import './Profile.scss';
 
  function Profile(props){
@@ -30,6 +31,9 @@ import './Profile.scss';
                 <h1>
                     {props.user.email}
                 </h1>
+            </div>
+            <div>
+                <Link to='/CreatePlaylist' activeClassName='active'><button>Create Playlist</button></Link>
             </div>
         </div> 
     </div>
