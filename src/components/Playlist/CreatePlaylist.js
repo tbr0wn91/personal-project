@@ -18,7 +18,7 @@ import {getUser} from '../../redux/reducer';
 
     createPlaylist(){
         const {playlist_name} = this.state;
-        axios.post(`/api/create_playlist`, {playlist_name: playlist_name, user_id}).then(res => {
+        axios.post(`/api/create_playlist`, {playlist_name: playlist_name, user_id: this.props.user.user_id}).then(res => {
             this.setState({
                 playlist_name: res.data,
               user_id: this.props.user.user_id
@@ -33,11 +33,13 @@ import {getUser} from '../../redux/reducer';
     }
 
     render(){
+        console.log(`this is props from redux`, this.props)
         console.log(`this is the playlist object`, this.state)
         return (
         <div>
             <div>CreatePlaylist</div>
             <input onChange={(e) => this.handlePlaylistName(e.target.value)} value={this.state.playlist_name} type="text" />
+            <button onClick={this.createPlaylist}>Add Music!</button>
         </div>
         )
     }

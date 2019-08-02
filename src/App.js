@@ -3,6 +3,7 @@ import {Route, Switch, NavLink, withRouter} from 'react-router-dom';
 import Login from './components/Home/Login';
 import Register from './components/Home/Register';
 import Profile from './components/Profile/Profile';
+import CreatePlaylist from './components/Playlist/CreatePlaylist';
 import {connect} from  'react-redux';
 import {getUser} from './redux/reducer'
 
@@ -56,9 +57,7 @@ class App extends Component {
         <Route exact path="/" component={Login} />
         <Route path="/Register"component={Register}/>
         <Route path="/Profile" component={Profile}/>
-        <Route path="/CreatePlaylist" render={() =>{
-          return <div>This is the CreatePlaylist path</div>
-        }}/>
+        <Route path="/CreatePlaylist" component={CreatePlaylist}/>
         <Route path="/DisplayPlaylist"render={() =>{
           return <div>This is the Home path</div>
         }} />
