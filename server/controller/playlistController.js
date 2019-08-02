@@ -51,11 +51,22 @@ module.exports = {
     },
 
     getAllUserPlaylists: (req, res, next) => {
+        console.log(`this is req body`, req.body)
         const db = req.app.get('db')
-        const {user_id} = req.body;
+        const {user_id} = req.query;
+        console.log(`user id in server`, user_id)
 
         db.get_user_playlists(user_id).then(playlists => {
+            console.log(`these are the found playlists`, playlists)
             res.status(200).send(playlists)
         }).catch(err => console.log(`uh oh couldnt get your playlists`))
+    },
+
+    selectAllSongs: (req, res, next) => {
+        const db = req.app.get('db');
+        
+        db.select_all_song().then(songs => {
+            res.status(200).send(songs)
+        })
     }
 }
