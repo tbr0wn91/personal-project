@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
-import './DisplayPlaylist.scss'
+import {Link, withRouter} from 'react-router-dom';
+import './DisplayPlaylist.scss';
+import Songs from '../Songs/Songs';
 
 
 
@@ -13,8 +14,12 @@ import './DisplayPlaylist.scss'
         super(props)
 
         this.state = {
-            playlist: []
+            playlist: [],
+            songs: [],
+            selected: false,
+            playlist_name: ''
         }
+        this.getPlaylistInfo = this.getPlaylistInfo.bind(this)
     }
     
     async componentDidMount(){
@@ -26,12 +31,24 @@ import './DisplayPlaylist.scss'
         })
     }
 
+    getPlaylistInfo(playlist_id, playlist_name){
+        axios.get(`/api/playlist_info/${playlist_id}`).then(songs => {
+            this.setState({
+                songs: songs.data,
+                selected: true,
+                playlist_name: playlist_name
+            })
+        })
+    }
 
     render(){
+        const {songs} = this.state;
+        console.log(`state coming from display playlist`,this.state)
         const displayPlaylists = this.state.playlist.map(playlist => {
             return (
                 <div>
                     <h1>{playlist.playlist_name}</h1>
+                    <button onClick={() => this.getPlaylistInfo(playlist.playlist_id, playlist.playlist_name)}>Select Playlist</button>
                 </div>
             )
         })
@@ -40,6 +57,8 @@ import './DisplayPlaylist.scss'
            <div className='playlists'>
                 {displayPlaylists}
             </div>
+
+            <Songs songs={songs}/>
 
             <div>
                 <Link to="/CreatePlaylist"><button>Go Back</button></Link>
@@ -55,4 +74,4 @@ function mapReduxToProps(ReduxState){
     return ReduxState
 };
 
- export default connect(mapReduxToProps)(DisplayPlaylist);
+ export default withRouter(connect(mapReduxToProps)(DisplayPlaylist));

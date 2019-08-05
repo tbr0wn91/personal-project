@@ -74,6 +74,8 @@ module.exports = {
         const db = req.app.get('db');
         const {playlist_id} = req.params;
 
-        db.get_playlist_info
+        db.get_playlist_info(playlist_id).then(playlist => {
+            res.status(200).send(playlist)
+        }).catch(err => console.log(`could not get that specific playlist`, err))
     }
 }
