@@ -68,5 +68,12 @@ module.exports = {
         db.select_all_song().then(songs => {
             res.status(200).send(songs)
         })
+    },
+
+    playlistInfo: (req, res, next) => {
+        const db = req.app.get('db');
+        const {playlist_id} = req.params;
+
+        db.get_playlist_info
     }
 }

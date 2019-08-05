@@ -9,6 +9,7 @@ import {getUser} from './redux/reducer'
 
 import './App.scss';
 import axios from 'axios';
+import DisplayPlaylist from './components/DisplayPlaylist/DisplayPlaylist';
 
 class App extends Component {
   constructor(props){
@@ -58,9 +59,7 @@ class App extends Component {
         <Route path="/Register"component={Register}/>
         <Route path="/Profile" component={Profile}/>
         <Route path="/CreatePlaylist" component={CreatePlaylist}/>
-        <Route path="/DisplayPlaylist"render={() =>{
-          return <div>This is the Home path</div>
-        }} />
+        <Route path="/DisplayPlaylist" component={DisplayPlaylist} />
   
       </Switch>
       </div>

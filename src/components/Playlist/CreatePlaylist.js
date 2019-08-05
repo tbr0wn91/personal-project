@@ -19,13 +19,13 @@ import {Link } from 'react-router-dom';
         }
 
         this.createPlaylist = this.createPlaylist.bind(this)
-        this.addSong = this.createPlaylist.bind(this)
+        this.addSong = this.addSong.bind(this)
         this.selectSong = this.selectSong.bind(this)
     }
 
 
      async componentDidMount(){
-         console.log(`this user props`, this.props.user.user_id)
+         
        const allSongs = await axios.get(`/api/get_all_songs`).then(res => {
            return res.data
        })
