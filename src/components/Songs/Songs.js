@@ -1,14 +1,18 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 
 export default class Songs extends Component{
     constructor(props){
         super(props)
 
         this.state = {
-            
+            playlist_name: ''
         }
     }
 
+    changeName(){
+        axios.put(`/api/update_playlist_name`, {playlist_name: playlist_name})
+    }
 
 
     render(){

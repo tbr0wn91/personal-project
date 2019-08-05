@@ -34,7 +34,8 @@ module.exports = {
 
     deletePlaylist: (req, res, next) => {
         const db = req.app.get('db');
-        const {playlist_id} = req.body;
+        const {playlist_id} = req.params;
+        console.log(`this is the playlist to delete`, playlist_id)
 
         db.delete_playlist(playlist_id)
         res.status(200).send(`Your playlist is gone FOREVER!`)
@@ -51,13 +52,13 @@ module.exports = {
     },
 
     getAllUserPlaylists: (req, res, next) => {
-        console.log(`this is req body`, req.body)
+        
         const db = req.app.get('db')
         const {user_id} = req.query;
-        console.log(`user id in server`, user_id)
+        
 
         db.get_user_playlists(user_id).then(playlists => {
-            console.log(`these are the found playlists`, playlists)
+            
             res.status(200).send(playlists)
         }).catch(err => console.log(`uh oh couldnt get your playlists`))
     },
