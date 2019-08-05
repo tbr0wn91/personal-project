@@ -2,6 +2,7 @@ import React, {Component } from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import {getUser} from '../../redux/reducer';
+import {Link } from 'react-router-dom';
 
 
  class CreatePlaylist extends Component {
@@ -136,6 +137,10 @@ import {getUser} from '../../redux/reducer';
             :
             <div/>
             }
+
+            <div>
+                <Link to='/DisplayPlaylist' activeClassName="active"><button>Your Playlists</button></Link>
+            </div>
         </div>
         )
     }

@@ -1,8 +1,32 @@
 import React, {Component} from 'react';
+import axios from 'axios';
+import {connect} from 'react-redux';
 
-export default function DisplayPlaylist(){
 
-    return (
-        <div>DisplayPlaylist</div>
-    )
+
+
+ class DisplayPlaylist extends Component{
+    constructor(props){
+        super(props)
+
+        this.state = {
+
+        }
+    }
+    
+
+
+
+    render(){
+        return(
+            <div></div>
+        )
+    }
 }
+
+
+function mapReduxToProps(ReduxState){
+    return ReduxState
+};
+
+ export default connect(mapReduxToProps)(DisplayPlaylist);
