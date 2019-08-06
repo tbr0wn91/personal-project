@@ -44,8 +44,9 @@ module.exports = {
     changePlaylistName: (req, res, next) => {
         const db = req.app.get('db');
         const {playlist_name, playlist_id} = req.body;
+        const {user_id} = req.params
 
-        db.change_playlist_name([playlist_name, playlist_id])
+        db.change_playlist_name([playlist_name, playlist_id, user_id])
         .then(name =>{
             res.status(200).send(name)
         }).catch(err => console.log(`Whoops can't do that`))

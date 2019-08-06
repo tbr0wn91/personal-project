@@ -6,17 +6,21 @@ export default class Songs extends Component{
         super(props)
 
         this.state = {
-            playlist_name: ''
+            playlist_name: '',
+            
         }
+        
     }
 
-    changeName(){
-        axios.put(`/api/update_playlist_name`, {playlist_name: playlist_name})
-    }
 
+    handleChange(value){
+        this.setState({
+            playlist_name: value
+        })
+    }
 
     render(){
-        console.log( `these are the songs`,this.props)
+        
         const displaySongs = this.props.songs.map(songs => {
             return <div>
                     <h1>{songs.name}</h1>
@@ -26,6 +30,13 @@ export default class Songs extends Component{
         })
         return(
             <div>
+                <div>
+                    <input onChange={(e) => this.handleChange(e.target.value)} value={this.state.playlist_name} type="text" placeholder="playlist name"></input>
+                    <button onClick={() => this.props.changePlaylistName(this.state.playlist_name, this.props.playlist_id)}>Change Playlist Name</button>
+                </div>
+                <div>
+                    {this.props.playlist_name}
+                </div>
                 <div>
                     {displaySongs}
                 </div>

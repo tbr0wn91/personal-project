@@ -18,39 +18,49 @@ import Songs from '../Songs/Songs';
             playlist: [],
             songs: [],
             selected: false,
-            playlist_name: ''
+            playlist_name: '',
+            playlist_id: 0
         }
         this.getPlaylistInfo = this.getPlaylistInfo.bind(this)
+        this.changePlaylistName = this.changePlaylistName.bind(this)
     }
     
     async componentDidMount(){
-       if(this.props.user){
+       
         const userPlaylists = await axios.get(`/api/user_playlists?user_id=${this.props.user.user_id}`).then(res => {
             return res.data
         })
         this.setState({
             playlist: userPlaylists
         })
-       } 
-       else{
-         axios.get('/auth/user_session').then(async (res) =>{
-            this.props.getUser(res.data);
-            const userPlaylists = await axios.get(`/api/user_playlists?user_id=${this.props.user.user_id}`).then(res => {
-                return res.data
-            })
-            this.setState({
-                playlist: userPlaylists
-            })
-          })
-       }
+    
+      
+       
     }
+
+     async changePlaylistName(playlist_name, playlist_id){
+         console.log(`this is props`,this.props)
+       const newPlaylist = await axios.put(`/api/update_playlist_name/${this.props.user.user_id}`, {playlist_name: playlist_name, playlist_id: playlist_id}).then(res => {
+            return res.data    
+        }) 
+        const songName = await axios.get(`/api/playlist_info/${playlist_id}`).then(res => {
+            return res.data
+        })
+        console.log(`this is the new playlist `, newPlaylist)
+        this.setState({
+            playlist_name: songName[0].playlist_name,
+            playlist: newPlaylist
+        })
+    }
+       
 
     getPlaylistInfo(playlist_id, playlist_name){
         axios.get(`/api/playlist_info/${playlist_id}`).then(songs => {
             this.setState({
                 songs: songs.data,
                 selected: true,
-                playlist_name: playlist_name
+                playlist_name: playlist_name,
+                playlist_id: playlist_id
             })
         })
     }
@@ -68,7 +78,7 @@ import Songs from '../Songs/Songs';
 
 
     render(){
-        const {songs} = this.state;
+        const {songs,playlist_id, playlist_name} = this.state;
         console.log(`state coming from display playlist`,this.state)
         const displayPlaylists = this.state.playlist.map(playlist => {
             return (
@@ -85,7 +95,7 @@ import Songs from '../Songs/Songs';
                 {displayPlaylists}
             </div>
 
-            <Songs songs={songs}/>
+            <Songs songs={songs} playlist_id={playlist_id} changePlaylistName={this.changePlaylistName} playlist_name={playlist_name}/>
 
             <div>
                 <Link to="/CreatePlaylist"><button>Go Back</button></Link>
