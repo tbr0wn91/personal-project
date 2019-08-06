@@ -49,16 +49,22 @@ import {Link } from 'react-router-dom';
         })
     }
 
-    addSong(){
+     async addSong(){
         const {name, artist} = this.state;
-        axios.post(`/api/add_song`, {name: name, artist: artist}).then(res => {
-            this.setState({
-                name: res.data,
-                artist: res.data
-            })
+       const songToAdd = await axios.post(`/api/add_song`, {name: name, artist: artist}).then(res => {
+           return res.data
+       })
+        const allSongs = await axios.get(`/api/get_all_songs`).then(res => {
+            return res.data
         })
-
-    }
+        this.setState({
+            songs: allSongs
+        })
+            
+    
+    
+       
+        }
 
     selectSong(song_id){
         this.setState({

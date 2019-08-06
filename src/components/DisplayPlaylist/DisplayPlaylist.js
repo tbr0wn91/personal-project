@@ -40,7 +40,7 @@ import Songs from '../Songs/Songs';
     }
 
      async changePlaylistName(playlist_name, playlist_id){
-         console.log(`this is props`,this.props)
+         
        const newPlaylist = await axios.put(`/api/update_playlist_name/${this.props.user.user_id}`, {playlist_name: playlist_name, playlist_id: playlist_id}).then(res => {
             return res.data    
         }) 
