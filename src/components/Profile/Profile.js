@@ -5,6 +5,10 @@ import './Profile.scss';
 
  function Profile(props){
     console.log(props)
+
+    if(!props.user){
+        return <></>
+    }
     return(
     <div className="profile-container">
         <div className="content">

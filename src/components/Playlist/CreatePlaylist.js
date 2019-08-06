@@ -91,6 +91,9 @@ import {Link } from 'react-router-dom';
     }
 
     render(){
+        if (!this.props.user){
+            return <></>
+        }
         const {artist, name} = this.state;
         console.log('this is state =>',this.state)
         const displaySongs = this.state.songs.map(songs => {
@@ -112,11 +115,13 @@ import {Link } from 'react-router-dom';
                 </div>
             )
         })
+
+        
         return (
         <div>
             <div>
                 <input onChange={(e) => this.handlePlaylistName(e.target.value)} value={this.state.playlist_name} type="text" />
-                <button onClick={this.createPlaylist}>Add Music!</button>
+                <button onClick={this.createPlaylist}>Create Playlist</button>
             </div>
 
             <div>

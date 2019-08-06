@@ -25,8 +25,9 @@ import Songs from '../Songs/Songs';
         this.changePlaylistName = this.changePlaylistName.bind(this)
     }
     
+    
     async componentDidMount(){
-       
+        
         const userPlaylists = await axios.get(`/api/user_playlists?user_id=${this.props.user.user_id}`).then(res => {
             return res.data
         })
@@ -78,6 +79,9 @@ import Songs from '../Songs/Songs';
 
 
     render(){
+        if (!this.props.user){
+            return <></>
+        }
         const {songs,playlist_id, playlist_name} = this.state;
         console.log(`state coming from display playlist`,this.state)
         const displayPlaylists = this.state.playlist.map(playlist => {
@@ -89,6 +93,8 @@ import Songs from '../Songs/Songs';
                 </div>
             )
         })
+
+        
         return(
         <div>
            <div className='playlists'>
