@@ -81,10 +81,10 @@ class App extends Component {
             <button className="mobile-logout" onClick={this.logout}>
               Log out
             </button>
-          </nav>
           <button className="logout" onClick={this.logout}>
             Log Out
           </button>
+          </nav>
         </header>
 
         <Switch>

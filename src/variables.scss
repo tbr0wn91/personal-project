@@ -9,5 +9,12 @@ $primarycolor: rgb(65, 62, 62);
 }
 
 @mixin button {
-    
+ background-color: $primarycolor;
+ color: white;
+ border-radius: 12px;
+ 
+}
+
+@mixin buttons {
+  
 }

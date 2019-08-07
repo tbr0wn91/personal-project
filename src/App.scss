@@ -41,6 +41,14 @@ header .mobile-logout{
   @include title;
 }
 
+.logout{
+  margin: 0 50px;
+  color: white;
+  background: none;
+  border: none;
+  padding: none;
+  font-size: 20px;
+}
 
 
 @media screen and (max-width: 725px){
@@ -49,7 +57,7 @@ header .mobile-logout{
     min-width: 100vw;
     display: flex;
     justify-content: space-between;
-    border: peachpuff solid 2px;
+    border: aqua solid 2px;
     
     
   }
@@ -98,6 +106,14 @@ header .mobile-logout{
    height: 50px;
    width: 100px;
    justify-content: center;
-
+  @include button
  }
+
+  header .mobile-logout:active{
+  
+      background-color: #0a0909;
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    
+  }
 }
