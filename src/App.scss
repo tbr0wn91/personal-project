@@ -5,17 +5,99 @@
   justify-content: space-around;
   align-items: center;
   height: 15vh;
-  width: 100%;
+  width: 100vw;
   background-color: $primarycolor;
 
   div{
     margin: 0 50px;
+    display: flex;
+    
   }
   
- 
+
+ .links{
+   color: white;
+   text-decoration: none;
+   margin: 0 50px;
+   font-size: 20px;
+   
+ }
+
+ .active{
+   color: black;
+ }
   
 }
 
-span {
+header .toggle-button{
+  display: none;
+}
+
+header .mobile-logout{
+  display: none;
+}
+
+.devify {
   @include title;
+}
+
+
+
+@media screen and (max-width: 725px){
+  .header-container{
+    width: 100vw;
+    min-width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    border: peachpuff solid 2px;
+    
+    
+  }
+
+ .menu-container{
+
+  
+   margin-left: 50px;
+ }
+
+ header nav {
+   min-height: 100vh;
+   min-width: 60vw;
+   position: fixed;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   align-items: center;
+   top: 0;
+   right: 0;
+   transform: translate(500px, 0);
+   transition: 0.4s;
+   transition-timing-function: ease-in-out;
+   background-color: aqua;
+
+   
+ }
+
+ .logout{
+   display: none;
+ }
+
+ header .show{
+   transform: translate(0, 0)
+ }
+
+ header .toggle-button {
+   display: flex;
+   z-index: 1;
+  
+ }
+
+
+ header .mobile-logout{
+   display: flex;
+   height: 50px;
+   width: 100px;
+   justify-content: center;
+
+ }
 }
