@@ -20,7 +20,8 @@ import './CreatePlaylist.scss';
             song_id: 0,
             choosing_song: false,
             songs: [],
-            playlist: []
+            playlist: [],
+            show: false
         }
 
         this.createPlaylist = this.createPlaylist.bind(this)
@@ -42,6 +43,18 @@ import './CreatePlaylist.scss';
            songs: allSongs,
            playlist: userPlaylists
        })
+    }
+
+    showModal = () => {
+        this.setState({
+            show: true
+        })
+    }
+
+    hideModal = () => {
+        this.setState({
+            show: false
+        })
     }
 
     createPlaylist(){
@@ -75,6 +88,7 @@ import './CreatePlaylist.scss';
         this.setState({
             song_id: song_id,
             choosing_song: true
+
         })
        
     }
@@ -83,7 +97,13 @@ import './CreatePlaylist.scss';
         const {song_id} = this.state;
 
         axios.post('/api/song_to_playlist', {playlist_id: playlist_id, song_id: song_id}).then(
-            () => alert(`Song added!`)
+            () => {
+                alert(`Song added!`)
+                
+                this.setState({
+                choosing_song: false
+            })
+        }
         )
     }
 
@@ -132,7 +152,7 @@ import './CreatePlaylist.scss';
         
         const displayPlaylists = this.state.playlist.map(playlist => {
             return(
-                <div>
+                <div className="myplaylists">
                     <h1>{playlist.playlist_name}</h1>
                     <button onClick={() => this.addSongToPlaylist(playlist.playlist_id)}>+ song to playlist</button>
                 </div>
@@ -173,8 +193,10 @@ import './CreatePlaylist.scss';
                 
                     </div>
                     { this.state.choosing_song ?
-                    <div>
+                    <div className="modal-container">
+                        
                         {displayPlaylists}
+                        
                     </div>
                     :
                     <div/>

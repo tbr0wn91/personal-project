@@ -1,9 +1,15 @@
 @import '../../variables.scss';
 
 
+
 .content-container{
     display: flex;
     align-items: center;
+
+    button{
+        margin: 0 4px;
+        @include buttons;
+    }
 }
 
 .input-container{
@@ -22,10 +28,7 @@
         margin: 0 8px;
     }
 
-    button{
-        margin: 0 4px;
-        @include buttons;
-    }
+  
 }
 
 .song-container{
@@ -49,6 +52,11 @@
             width: 16.7vw;
             display: flex;
             justify-content: center;
+            font-family: 'Lobster', 'cursive';
+            color: aqua;
+            font-size: 22px;
+            font-weight: 600;
+            text-decoration: underline;
             
         }
     }
@@ -82,11 +90,29 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            
         }
 
         h1{
             font-size: 20px;
             color: white;
+        }
+    }
+    .modal-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50vw;
+        height: 70vh;
+        background: rgba(0, 0, 0, 0.712);
+        position: fixed;
+
+        .myplaylists{
+            background: white;
+            color:black;
+            height: 100px;
+            width: 200px;
+            
         }
     }
 }
