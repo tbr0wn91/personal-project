@@ -1,0 +1,31 @@
+@import '../../variables.scss';
+
+
+.content-container{
+    display: flex;
+}
+
+.input-container{
+    background-color: $primarycolor;
+    height: 70vh;
+    width: 50vw;
+    margin-top: 50px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: solid 2px rgb(65, 220, 225);
+}
+
+.song-container{
+    background-color: $primarycolor;
+    height: 70vh;
+    width: 50vw;
+    margin-top: 50px;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: solid 2px rgb(65, 220, 225);
+    overflow: scroll;
+}

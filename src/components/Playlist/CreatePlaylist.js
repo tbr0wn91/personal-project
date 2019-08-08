@@ -3,6 +3,7 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 import {getUser} from '../../redux/reducer';
 import {Link } from 'react-router-dom';
+import './CreatePlaylist.scss';
 
 
  class CreatePlaylist extends Component {
@@ -124,34 +125,42 @@ import {Link } from 'react-router-dom';
 
         
         return (
-        <div>
-            <div>
-                <input onChange={(e) => this.handlePlaylistName(e.target.value)} value={this.state.playlist_name} type="text" />
-                <button onClick={this.createPlaylist}>Create Playlist</button>
+        <div className="content-container">
+            <div className="input-container">
+                <div className='create-playlist'>
+                    <input placeholder="playlist name" onChange={(e) => this.handlePlaylistName(e.target.value)} value={this.state.playlist_name} type="text" />
+                    <button onClick={this.createPlaylist}>Create Playlist</button>
+                </div>
+
+                <div>
+                    Add Song: 
+                    <input placeholder='artist name' name='artist' type='artist' value={artist} onChange={(e) =>this.universalChangeHandler(e.target.name, e.target.value)}/>
+                    <input placeholder='song name' name='name' type='name' value={name} onChange={(e) => this.universalChangeHandler(e.target.name, e.target.value)}/> 
+                    <button onClick={this.addSong}>Add Song</button>     
+                </div>
+
+                <div>
+                    <Link to='/DisplayPlaylist' activeClassName="active"><button>Your Playlists</button></Link>
+                </div>
             </div>
 
-            <div>
-                Add Song: 
-                <input placeholder='artist name' name='artist' type='artist' value={artist} onChange={(e) =>this.universalChangeHandler(e.target.name, e.target.value)}/>
-                <input placeholder='song name' name='name' type='name' value={name} onChange={(e) => this.universalChangeHandler(e.target.name, e.target.value)}/> 
-                <button onClick={this.addSong}>Add Song</button>     
-            </div>
-            <div>
+            <div className='song-container'>
+                <div>
+                
+                        {displaySongs}
+                
+                    </div>
+                    { this.state.choosing_song ?
+                    <div>
+                        {displayPlaylists}
+                    </div>
+                    :
+                    <div/>
+                    }
+                
+                </div>
+
             
-                {displaySongs}
-        
-            </div>
-            { this.state.choosing_song ?
-            <div>
-                {displayPlaylists}
-            </div>
-            :
-            <div/>
-            }
-
-            <div>
-                <Link to='/DisplayPlaylist' activeClassName="active"><button>Your Playlists</button></Link>
-            </div>
         </div>
         )
     }
