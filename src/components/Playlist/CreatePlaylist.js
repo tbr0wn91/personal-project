@@ -3,6 +3,10 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 import {getUser} from '../../redux/reducer';
 import {Link } from 'react-router-dom';
+
+
+
+
 import './CreatePlaylist.scss';
 
 
@@ -105,11 +109,23 @@ import './CreatePlaylist.scss';
         console.log('this is state =>',this.state)
         const displaySongs = this.state.songs.map(songs => {
             return(
-                <div>
+                
+                <div className='library'>
+                    
+                    <div className="songs">
                     <h1>{songs.name}</h1>
+                    </div>
+
+                    <div className='artists'>
                     <h1>{songs.artist}</h1>
+                    </div>
+
+                    <div className="addsong-button">
                     <button onClick={() => this.selectSong(songs.song_id)}>+ song</button>
+                    </div>
+
                 </div>
+                
             )
         
         })
