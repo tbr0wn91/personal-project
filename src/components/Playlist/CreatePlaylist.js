@@ -111,7 +111,7 @@ import './CreatePlaylist.scss';
             return(
                 
                 <div className='library'>
-                    
+
                     <div className="songs">
                     <h1>{songs.name}</h1>
                     </div>
@@ -149,7 +149,7 @@ import './CreatePlaylist.scss';
                 </div>
 
                 <div>
-                    Add Song: 
+                    
                     <input placeholder='artist name' name='artist' type='artist' value={artist} onChange={(e) =>this.universalChangeHandler(e.target.name, e.target.value)}/>
                     <input placeholder='song name' name='name' type='name' value={name} onChange={(e) => this.universalChangeHandler(e.target.name, e.target.value)}/> 
                     <button onClick={this.addSong}>Add Song</button>     
@@ -161,6 +161,12 @@ import './CreatePlaylist.scss';
             </div>
 
             <div className='song-container'>
+                <div className='labels'>
+                    <span>Song Title</span>
+                    <span>Artist</span>
+                    <span>Add Song</span>
+                </div>
+
                 <div>
                 
                         {displaySongs}

@@ -16,5 +16,9 @@ $primarycolor: rgb(65, 62, 62);
 }
 
 @mixin buttons {
-  
+  color: #0099CC; 
+  background: transparent; 
+  border: 2px solid #0099CC;
+  border-radius: 6px; 
+
 }
