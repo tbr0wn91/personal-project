@@ -102,6 +102,7 @@ header .mobile-logout{
  header .toggle-button {
    display: flex;
    z-index: 1;
+   @include buttons;
   
  }
 
