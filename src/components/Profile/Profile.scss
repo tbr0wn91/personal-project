@@ -1,5 +1,8 @@
 @import '../../variables.scss';
 
+#root{
+    width: 100%;
+}
 
 .profile-container{
     height: 100%;
@@ -16,6 +19,8 @@
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
+        border: solid 2px rgb(65, 220, 225);
+        border-radius: 10px;
 
         .title{
             color: aqua;
@@ -51,4 +56,14 @@
         }
     }
 
+}
+
+@media screen and (max-width: 750px){
+    .profile-container{
+        display: flex;
+        
+        .content{
+            width: 100%;
+        }
+    }
 }

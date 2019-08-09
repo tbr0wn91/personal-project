@@ -23,6 +23,7 @@
     justify-content: space-around;
     align-items: center;
     border: solid 2px rgb(65, 220, 225);
+    border-radius: 10px;
     
     input{
         margin: 0 8px;
@@ -42,6 +43,7 @@
     flex-direction: column;
     justify-content: space-between;
     border: solid 2px rgb(65, 220, 225);
+    border-radius: 10px;
     overflow: scroll;
 
     .labels{
