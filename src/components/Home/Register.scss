@@ -16,6 +16,7 @@ body{
         height: 50vh;
         width: 50vw;
         background-color: $primarycolor;
+        border: solid 2px rgb(65, 220, 225);
     
         .register-form{
             
@@ -31,6 +32,10 @@ body{
                 
                 @include inputs;
                 
+             }
+
+             button{
+                 @include buttons;
              }
         }
      

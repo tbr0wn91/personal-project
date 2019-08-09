@@ -96,18 +96,23 @@ import Songs from '../Songs/Songs';
 
         
         return(
-        <div>
-           <div className='playlists'>
-                {displayPlaylists}
+        <body>
+            <div className='display-container'>
+                <div>
+                <div className='playlists'>
+                        {displayPlaylists}
+                    </div>
+
+                    <Songs songs={songs} playlist_id={playlist_id} changePlaylistName={this.changePlaylistName} playlist_name={playlist_name}/>
+
+                    <div>
+                        <Link to="/CreatePlaylist"><button>Go Back</button></Link>
+                    </div>
+
+                </div>
             </div>
-
-            <Songs songs={songs} playlist_id={playlist_id} changePlaylistName={this.changePlaylistName} playlist_name={playlist_name}/>
-
-            <div>
-                <Link to="/CreatePlaylist"><button>Go Back</button></Link>
-            </div>
-
-        </div>
+            
+        </body>
         )
     }
 }

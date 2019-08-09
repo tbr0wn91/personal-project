@@ -12,28 +12,30 @@ import './Profile.scss';
     return(
     <div className="profile-container">
         <div className="content">
+            <div className='title'>Your Profile:</div>
             <div>
                 <img src={props.user.picture} />
                      
             </div>
             <div>
-                <h1>
-                    {props.user.username}
+                
+                <h1> 
+                    
+                    <span>Username:</span> {props.user.username}
                 </h1>
             </div>
             <div>
                 <h1>
-                    {props.user.first_name}
+                    
+                   <span>Name:</span> {props.user.first_name} {props.user.last_name}
                 </h1>
+               
             </div>
+            
             <div>
-                <h1>
-                    {props.user.last_name}
-                </h1>
-            </div>
-            <div>
-                <h1>
-                    {props.user.email}
+                <h1> 
+                    
+                <span>Email:</span> {props.user.email}
                 </h1>
             </div>
             <div>

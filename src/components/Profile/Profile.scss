@@ -8,11 +8,47 @@
     align-items: center;
 
     .content{
+        margin-top: 100px;
         height: 60vh;
         width: 60vw;
         background-color: $primarycolor;
-        // justify-content: center;
-        // align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+
+        .title{
+            color: aqua;
+            @extend %fancy-font;
+            font-size: 28px;
+            text-decoration: underline;
+        }
+
+        img{
+            border-radius: 50%;
+            border: solid 4px rgb(65, 220, 225);
+            height: 300px;
+            width: 300px;
+        }
+
+        span{
+            @extend %fancy-font;
+            color: aqua;
+            font-size: 22px;
+            margin-right: 10px;
+        }
+
+        h1{
+            font-family: 'Lexend Deca', sans-serif;
+            color: white;
+            font-size: 18px;
+        }
+
+        button{
+            @include buttons;
+            padding: 14px;
+            font-size: 18px;
+        }
     }
 
 }
