@@ -11,8 +11,9 @@
     align-items: center;
 
     .content{
-        margin-top: 100px;
-        height: 60vh;
+        margin-top: 50px;
+        
+        height: 70vh;
         width: 60vw;
         background-color: $primarycolor;
         display: flex;
@@ -61,9 +62,15 @@
 @media screen and (max-width: 750px){
     .profile-container{
         display: flex;
+        margin: 0 auto;
+        width: 100vw;
         
         .content{
-            width: 100%;
+            width: 98vw;
+            height: 90vh;
+            position: fixed;
+            top: 1px;
+
         }
     }
 }
