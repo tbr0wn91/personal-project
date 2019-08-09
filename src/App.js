@@ -50,7 +50,7 @@ class App extends Component {
   render() {
     console.log(this.props);
     return (
-      <div>
+      <div className="parent-container">
         <header className="header-container">
           <div className="devify">Devify</div>
           <div className="menu-container">

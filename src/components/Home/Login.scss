@@ -1,11 +1,20 @@
 @import '../../variables.scss';
 
+.parent-container{
+    width: 100%;
+}
+
+
 body{
     background: $background;
    
     
 
    
+}
+
+.header-container{
+    width: 100%;
 }
 
 .login-container{
@@ -38,9 +47,35 @@ body{
     }
 }
 
-@media screen and (max-width: 500px){
+@media screen and (max-width: 750px){
+    .header-container{
+        position: absolute;
+        width: 100%;
+        border: fixed;
+        right: 0;
+        
+        .devify{
+            position: absolute;
+        }
+
+        .menu-container {
+            .toggle-button{
+                position: fixed;
+                top: 20px;
+                right: 20px;
+
+            }
+        }
+            
+        
+
+    }
+
+    
+    
     .login-container{
-        min-height: 100vh;
-        min-width: 100vw;
+        margin-top: 0;
+        min-height: 120vh;
+        width: 100%;
     }
 }
