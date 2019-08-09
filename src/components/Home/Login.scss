@@ -18,6 +18,7 @@ body{
     justify-content: center;  
     align-items: center;
     margin: 0 auto;
+    margin-top: 100px;
 
     .inputs{
         display: flex;
@@ -25,14 +26,15 @@ body{
     }
     
     input{
-        flex-direction: column;
-        margin: 10px ;
-        border: none;
-        height: 30px;
-        border: solid 2px rgb(65, 220, 225);
-        padding: 5px;
+        @include inputs;
+        margin: 15px;
         
-        
+    }
+
+    button{
+        @include buttons;
+        padding: 10px;
+        margin: 10px;
     }
 }
 

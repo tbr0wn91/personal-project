@@ -86,7 +86,7 @@ import Songs from '../Songs/Songs';
         console.log(`state coming from display playlist`,this.state)
         const displayPlaylists = this.state.playlist.map(playlist => {
             return (
-                <div>
+                <div className='display-container'>
                     <h1>{playlist.playlist_name}</h1>
                     <button onClick={() => this.getPlaylistInfo(playlist.playlist_id, playlist.playlist_name)}>Select Playlist</button>
                     <button onClick={() => this.deletePlaylist(playlist.playlist_id)}>Delete Playlist</button>

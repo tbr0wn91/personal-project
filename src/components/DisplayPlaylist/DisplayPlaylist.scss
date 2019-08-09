@@ -9,6 +9,10 @@ body{
         height: 60vh;
         width: 60vw;
         background-color: $primarycolor;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
 
         button{
             @include buttons;
