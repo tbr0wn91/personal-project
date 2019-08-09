@@ -1,0 +1,39 @@
+@import '../../variables.scss';
+
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+
+    .register-container{
+        margin-top: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: space-between;
+        height: 50vh;
+        width: 50vw;
+        background-color: $primarycolor;
+    
+        .register-form{
+            
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+    
+    
+    
+            input {
+                
+                @include inputs;
+                
+             }
+        }
+     
+    }
+
+}

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {connect} from  'react-redux';
 import {getUser} from '../../redux/reducer';
+import './Register.scss';
 
  class Register extends Component {
     constructor(props){
@@ -37,15 +38,20 @@ import {getUser} from '../../redux/reducer';
         console.log(this.state)
         const {username, createPassword, email, firstName, lastName, picture } = this.state
         return (
-            <div>
-                <input placeholder='username' name='username' type='username' value={username} onChange={e => this.universalChangeHandler(e.target.name, e.target.value)}/>
-                <input placeholder='createPassword' name='createPassword' type='createPassword' value={createPassword} onChange={e => this.universalChangeHandler(e.target.name, e.target.value)}/>
-                <input placeholder='email' name='email' type='email' value={email} onChange={e => this.universalChangeHandler(e.target.name, e.target.value)}/>
-                <input placeholder='firstName' name='firstName' type='firstName' value={firstName} onChange={e => this.universalChangeHandler(e.target.name, e.target.value)}/>
-                <input placeholder='lastName' name='lastName' type='lastName' value={lastName} onChange={e => this.universalChangeHandler(e.target.name, e.target.value)}/>
-                <input placeholder='picture' name='picture' type='picture' value={picture} onChange={e => this.universalChangeHandler(e.target.name, e.target.value)}/>
-                <button onClick={this.register}>Create Profile</button>
-            </div>
+           
+        <body>
+            <div className='register-container'>
+                    <div className='register-form'>
+                        <input placeholder='username' name='username' type='username' value={username} onChange={e => this.universalChangeHandler(e.target.name, e.target.value)}/>
+                        <input placeholder='createPassword' name='createPassword' type='createPassword' value={createPassword} onChange={e => this.universalChangeHandler(e.target.name, e.target.value)}/>
+                        <input placeholder='email' name='email' type='email' value={email} onChange={e => this.universalChangeHandler(e.target.name, e.target.value)}/>
+                        <input placeholder='firstName' name='firstName' type='firstName' value={firstName} onChange={e => this.universalChangeHandler(e.target.name, e.target.value)}/>
+                        <input placeholder='lastName' name='lastName' type='lastName' value={lastName} onChange={e => this.universalChangeHandler(e.target.name, e.target.value)}/>
+                        <input placeholder='picture' name='picture' type='picture' value={picture} onChange={e => this.universalChangeHandler(e.target.name, e.target.value)}/>
+                        <button onClick={this.register}>Create Profile</button>
+                    </div>
+                </div>
+        </body>
         )
     }
 }

@@ -26,6 +26,7 @@
     
     input{
         margin: 0 8px;
+        @include inputs;
     }
 
   
@@ -52,7 +53,7 @@
             width: 16.7vw;
             display: flex;
             justify-content: center;
-            font-family: 'Lobster', 'cursive';
+            @extend %fancy-font;
             color: aqua;
             font-size: 22px;
             font-weight: 600;
