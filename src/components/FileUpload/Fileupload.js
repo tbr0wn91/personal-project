@@ -13,13 +13,15 @@ class FileUpload extends Component {
         event.preventDefault();
         const formData = new FormData();
         formData.append('file', this.state.file[0]);
-        axios.post('http://devify.s3.amazonaws.com', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        }).then(response => {
+        console.log(`this is the file`, formData)
+        axios.post('/api/file_upload', formData,{
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }}).then(response => {
+            console.log(response)
           // handle your response;
         }).catch(error => {
+            console.log(error)
           // handle your error
         });
       }

@@ -141,6 +141,13 @@ import './CreatePlaylist.scss';
                     <h1>{songs.artist}</h1>
                     </div>
 
+                    <div className='audio'>
+                    <audio controls>
+                    <source src={`https://devify.s3-us-west-1.amazonaws.com/bucketFolder/${songs.audio_file}`} type="audio/mp3" />
+                    </audio>
+                    
+                    </div>
+
                     <div className="addsong-button">
                     <button onClick={() => this.selectSong(songs.song_id)}>+ song</button>
                     </div>
@@ -173,6 +180,9 @@ import './CreatePlaylist.scss';
                     
                     <input placeholder='artist name' name='artist' type='artist' value={artist} onChange={(e) =>this.universalChangeHandler(e.target.name, e.target.value)}/>
                     <input placeholder='song name' name='name' type='name' value={name} onChange={(e) => this.universalChangeHandler(e.target.name, e.target.value)}/> 
+                <div>
+                     <Fileupload />
+                </div>
                     <button onClick={this.addSong}>Add Song</button>     
                 </div>
 
@@ -182,7 +192,7 @@ import './CreatePlaylist.scss';
             </div>
 
             <div className='song-container'>
-                <Fileupload />
+               
                 <div className='labels'>
                     <span>Song Title</span>
                     <span>Artist</span>

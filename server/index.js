@@ -71,7 +71,7 @@ const uploadFile = (buffer, name, type) => {
     return s3.upload(params).promise();
   };
 
-  app.post('http://devify.s3.amazonaws.com', (request, response) => {
+  app.post('/api/file_upload', (request, response) => {
     const form = new multiparty.Form();
       form.parse(request, async (error, fields, files) => {
         if (error) throw new Error(error);
@@ -84,6 +84,7 @@ const uploadFile = (buffer, name, type) => {
           const data = await uploadFile(buffer, fileName, type);
           return response.status(200).send(data);
         } catch (error) {
+          console.log(`this tis the error`, error)
           return response.status(400).send(error);
         }
       });
