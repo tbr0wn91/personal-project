@@ -3,6 +3,7 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 import {getUser} from '../../redux/reducer';
 import {Link } from 'react-router-dom';
+import Fileupload from '../FileUpload/Fileupload';
 
 
 
@@ -181,6 +182,7 @@ import './CreatePlaylist.scss';
             </div>
 
             <div className='song-container'>
+                <Fileupload />
                 <div className='labels'>
                     <span>Song Title</span>
                     <span>Artist</span>

@@ -1,12 +1,26 @@
 const express = require('express');
 const massive = require('massive');
 const session = require('express-session');
+const AWS = require('aws-sdk');
+const fs = require('fs');
+const fileType = require('file-type');
+const bluebird = require('bluebird');
+const multiparty = require('multiparty');
 const { login, logout, register, userSession} = require('./controller/authController')
 const { createPlaylist, addSong, addSongToPlaylist, changePlaylistName, deleteSongInPlaylist, deletePlaylist, getAllUserPlaylists, selectAllSongs, playlistInfo} = require('./controller/playlistController');
 require('dotenv').config();
 const app = express();
 const { CONNECTION_STRING, SESSION_SECRET, SERVER_PORT} = process.env;
 app.use(express.json());
+
+AWS.config.update({
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+});
+
+AWS.config.setPromisesDependency(bluebird);
+
+const s3 = new AWS.S3();
 
 
 massive(CONNECTION_STRING).then(db => {
@@ -41,6 +55,39 @@ app.put(`/api/update_playlist_name/:user_id`, changePlaylistName)
 app.get(`/api/user_playlists`, getAllUserPlaylists)
 app.get(`/api/get_all_songs`, selectAllSongs)
 app.get(`/api/playlist_info/:playlist_id`, playlistInfo )
+
+
+
+//s3
+
+const uploadFile = (buffer, name, type) => {
+    const params = {
+      ACL: 'public-read',
+      Body: buffer,
+      Bucket: process.env.S3_BUCKET,
+      ContentType: type.mime,
+      Key: `${name}.${type.ext}`
+    };
+    return s3.upload(params).promise();
+  };
+
+  app.post('http://devify.s3.amazonaws.com', (request, response) => {
+    const form = new multiparty.Form();
+      form.parse(request, async (error, fields, files) => {
+        if (error) throw new Error(error);
+        try {
+          const path = files.file[0].path;
+          const buffer = fs.readFileSync(path);
+          const type = fileType(buffer);
+          const timestamp = Date.now().toString();
+          const fileName = `bucketFolder/${timestamp}-lg`;
+          const data = await uploadFile(buffer, fileName, type);
+          return response.status(200).send(data);
+        } catch (error) {
+          return response.status(400).send(error);
+        }
+      });
+  });
 
 
 
