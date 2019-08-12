@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './Songs.scss'
 
 
 export default class Songs extends Component{
@@ -22,9 +23,16 @@ export default class Songs extends Component{
     render(){
         
         const displaySongs = this.props.songs.map(songs => {
-            return <div>
+            return <div className="playlist-info-container">
+                   
+                    <div className="songs-in-playlist">
                     <h1>{songs.name}</h1>
+                    </div>
+
+                    <div className="artist-in-playlist">
                     <h1>{songs.artist}</h1>
+                    </div>
+
                  </div>
                 
         })

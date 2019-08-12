@@ -1,0 +1,17 @@
+.playlist-info-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .songs-in-playlist{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .artist-in-playlist{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

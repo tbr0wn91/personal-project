@@ -3,7 +3,7 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 import {getUser} from '../../redux/reducer';
 import {Link } from 'react-router-dom';
-import Fileupload from '../FileUpload/Fileupload';
+
 
 
 
@@ -22,7 +22,10 @@ import './CreatePlaylist.scss';
             choosing_song: false,
             songs: [],
             playlist: [],
-            show: false
+            show: false,
+            file: null,
+            audio_file: '',
+            loading: true
         }
 
         this.createPlaylist = this.createPlaylist.bind(this)
@@ -69,8 +72,10 @@ import './CreatePlaylist.scss';
     }
 
      async addSong(){
-        const {name, artist} = this.state;
-       const songToAdd = await axios.post(`/api/add_song`, {name: name, artist: artist}).then(res => {
+         
+        const {name, artist, audio_file} = this.state;
+        console.log(`audio file`, audio_file)
+       const songToAdd = await axios.post(`/api/add_song`, {name: name, artist: artist, audio_file: audio_file}).then(res => {
            return res.data
        })
         const allSongs = await axios.get(`/api/get_all_songs`).then(res => {
@@ -80,10 +85,34 @@ import './CreatePlaylist.scss';
             songs: allSongs
         })
             
-    
-    
-       
         }
+
+
+        submitFile = (event) => {
+            event.preventDefault();
+           
+            const formData = new FormData();
+            formData.append('file', this.state.file[0]);
+            console.log(`this is the file`, formData)
+            axios.post('/api/file_upload', formData,{
+                headers: {
+                  'Content-Type': 'multipart/form-data'
+                }}).then(response => {
+                console.log(response)
+                this.setState({
+                    audio_file: response.data.Location,
+                    loading: false
+                })
+              // handle your response;
+            }).catch(error => {
+                console.log(error)
+              // handle your error
+            });
+          }
+        
+          handleFileUpload = (event) => {
+            this.setState({file: event.target.files});
+          }
 
     selectSong(song_id){
         this.setState({
@@ -143,7 +172,7 @@ import './CreatePlaylist.scss';
 
                     <div className='audio'>
                     <audio controls>
-                    <source src={`https://devify.s3-us-west-1.amazonaws.com/bucketFolder/${songs.audio_file}`} type="audio/mp3" />
+                    <source src={songs.audio_file} type="audio/mp3" />
                     </audio>
                     
                     </div>
@@ -181,9 +210,12 @@ import './CreatePlaylist.scss';
                     <input placeholder='artist name' name='artist' type='artist' value={artist} onChange={(e) =>this.universalChangeHandler(e.target.name, e.target.value)}/>
                     <input placeholder='song name' name='name' type='name' value={name} onChange={(e) => this.universalChangeHandler(e.target.name, e.target.value)}/> 
                 <div>
-                     <Fileupload />
+                    <form onSubmit={this.submitFile}>
+                    <input label='upload file' type='file' onChange={this.handleFileUpload} />
+                    <button type='submit'>Send</button>
+                    </form>
                 </div>
-                    <button onClick={this.addSong}>Add Song</button>     
+                    <button disabled={this.state.loading} onClick={this.addSong}>Add Song</button>     
                 </div>
 
                 <div>

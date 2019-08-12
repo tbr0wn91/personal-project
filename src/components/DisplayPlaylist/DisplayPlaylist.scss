@@ -11,11 +11,26 @@ body{
         background-color: $primarycolor;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
+        justify-content: space-between;
         align-items: flex-start;
+        border-radius: 5px;
+        border: solid 2px rgb(65, 220, 225);
+
+        // .playlist{
+        //     display: flex;
+        // }
+        
+        // .playlist-info{
+        //     color: white;
+        //     font-family: 'Lexend Deca', sans-serif;
+        //     display: flex;
+        //     justify-content: space-between;
+        
+        // }
 
         button{
             @include buttons;
+            margin: 10px;
         }
 
         input{
@@ -23,6 +38,7 @@ body{
         }
     }
 }
+
 
 
 

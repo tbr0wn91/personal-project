@@ -103,7 +103,9 @@ import Songs from '../Songs/Songs';
                         {displayPlaylists}
                     </div>
 
+                    <div className="playlist-info">
                     <Songs songs={songs} playlist_id={playlist_id} changePlaylistName={this.changePlaylistName} playlist_name={playlist_name}/>
+                    </div>
 
                     <div>
                         <Link to="/CreatePlaylist"><button>Go Back</button></Link>

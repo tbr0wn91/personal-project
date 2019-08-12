@@ -10,8 +10,8 @@ module.exports = {
 
     addSong: async (req, res, next) => {
         const db = req.app.get('db')
-        let {name, artist} = req.body;
-        const song = await db.add_song([name, artist])
+        let {name, artist, audio_file} = req.body;
+        const song = await db.add_song([name, artist, audio_file])
         res.status(200).send(song)
     },
 
