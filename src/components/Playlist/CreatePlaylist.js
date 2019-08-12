@@ -90,24 +90,31 @@ import './CreatePlaylist.scss';
 
         submitFile = (event) => {
             event.preventDefault();
-           
-            const formData = new FormData();
-            formData.append('file', this.state.file[0]);
-            console.log(`this is the file`, formData)
-            axios.post('/api/file_upload', formData,{
-                headers: {
-                  'Content-Type': 'multipart/form-data'
-                }}).then(response => {
-                console.log(response)
-                this.setState({
-                    audio_file: response.data.Location,
-                    loading: false
-                })
-              // handle your response;
-            }).catch(error => {
-                console.log(error)
-              // handle your error
-            });
+            if(!this.state.file){
+                alert('Please select a file!')
+            }
+            else {
+                const formData = new FormData();
+                formData.append('file', this.state.file[0]);
+                
+                console.log(`this is the file`, formData)
+                axios.post('/api/file_upload', formData,{
+                    headers: {
+                      'Content-Type': 'multipart/form-data'
+                    }}).then(response => {
+                    console.log(response)
+                    this.setState({
+                        audio_file: response.data.Location,
+                        loading: false
+                    })
+                  // handle your response;
+                }).catch(error => {
+                    console.log(error)
+                  // handle your error
+                });
+
+            }
+         
           }
         
           handleFileUpload = (event) => {
