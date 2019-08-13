@@ -12,6 +12,8 @@ require('dotenv').config();
 const app = express();
 const { CONNECTION_STRING, SESSION_SECRET, SERVER_PORT} = process.env;
 app.use(express.json());
+app.use( express.static( `${__dirname}/../build` ) );
+
 
 AWS.config.update({
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -90,6 +92,11 @@ const uploadFile = (buffer, name, type) => {
       });
   });
 
+
+  const path = require('path')
+  app.get('*', (req, res)=>{
+    res.sendFile(path.join(__dirname, '../build/index.html'));
+  })
 
 
 app.listen(SERVER_PORT, () => console.log(`listening on server port ${SERVER_PORT}`))
