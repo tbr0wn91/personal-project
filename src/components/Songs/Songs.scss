@@ -1,17 +1,104 @@
+@import '../../variables.scss';
+
+
 .playlist-info-container{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
-    .songs-in-playlist{
+    
+
+
+}
+
+.display-container  > h1 {
+    @extend %fancy-font;
+     color: aqua;
+    font-size: 22px;
+    margin: 5px;
+}
+
+.playlist-container-two{
+    
+
+    .playlist-title{
+        @extend %fancy-font;
+        color: aqua;
+        font-size: 22px;
+        margin: auto;
         display: flex;
-        align-items: center;
         justify-content: center;
+        
+     }
+}
+
+    
+
+    
+
+
+
+.song-container-two{
+    background-color: $primarycolor;
+    height: 35vh;
+    width: 50vw;
+    margin-top: 50px;
+    margin-left: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: solid 2px rgb(65, 220, 225);
+    border-radius: 10px;
+    overflow: scroll;
+
+    .labels{
+        margin-top: 5px;
+        display: flex;
+        justify-content: space-around;
+
+        span{
+            width: 16.7vw;
+            display: flex;
+            justify-content: center;
+            @extend %fancy-font;
+            color: aqua;
+            font-size: 22px;
+            font-weight: 600;
+            text-decoration: underline;
+            
+        }
     }
 
-    .artist-in-playlist{
+    .library-two{
+        
+        height: 50vh;
         display: flex;
+        justify-content: space-around;
         align-items: center;
-        justify-content: center;
+
+       
+      
+        h1{
+            font-size: 20px;
+            color: white;
+        }
+
+        .songs{
+            width: 16.7vw;
+            display: flex;
+            align-items: center;
+            justify-content: center; 
+            font-family: 'Lexend Deca', sans-serif;
+        }
+
+        .artists{
+            width: 16.7vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Lexend Deca', sans-serif;
+        }
+
     }
+
 }

@@ -43,6 +43,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    text-align: center;
     border: solid 2px rgb(65, 220, 225);
     border-radius: 10px;
     overflow: scroll;
@@ -129,11 +130,15 @@
         display: flex;
         flex-direction: column;
         overflow: scroll;
+        width: auto;
+
+       
         
 
         .input-container{
-            height: 40vh;
-            width: 101vw;
+            height: 50vh;
+            width: 100vw;
+            margin-left: 10px;
             display: flex;
             padding-top: 50px;
             
@@ -164,8 +169,36 @@
         .song-container{
             display:flex;
             margin: 0;
-            width: 101vw;
+            width: 100%;
             overflow: scroll;
+
+           .library{
+               
+               display: flex;
+
+               h1{
+                   font-size: 15px;
+               }
+               .songs{
+                   width: 10%;
+                   margin: 15px;
+                   
+               }
+               .artists{
+                   width: 10%;
+                   margin: 15px;
+               }
+
+               audio {
+                  width: 100px; 
+                  z-index: 0;
+               }
+
+               .addsong-button{
+                    width: 10%;
+               }
+              
+           }
         }
     }
 }

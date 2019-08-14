@@ -6,7 +6,7 @@ body{
 
     .display-container{
         margin-top: 100px;
-       
+        
         width: 60vw;
         background-color: $primarycolor;
         display: flex;
@@ -16,17 +16,9 @@ body{
         border-radius: 5px;
         border: solid 2px rgb(65, 220, 225);
 
-        // .playlist{
-        //     display: flex;
-        // }
-        
-        // .playlist-info{
-        //     color: white;
-        //     font-family: 'Lexend Deca', sans-serif;
-        //     display: flex;
-        //     justify-content: space-between;
-        
-        // }
+      .container-child{
+          height: 120vh;
+      }
 
         button{
             @include buttons;

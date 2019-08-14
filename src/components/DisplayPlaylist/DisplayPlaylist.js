@@ -98,7 +98,7 @@ import Songs from '../Songs/Songs';
         return(
         <body>
             <div className='display-container'>
-                <div>
+                <div className='container-child'>
                 <div className='playlists'>
                         {displayPlaylists}
                     </div>

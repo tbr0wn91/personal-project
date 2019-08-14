@@ -52,7 +52,7 @@ body{
 @media screen and (max-width: 750px){
     .header-container{
         position: absolute;
-        width: 100%;
+        width: 99%;
         border: fixed;
         right: 0;
         
@@ -78,6 +78,6 @@ body{
     .login-container{
         margin-top: 0;
         min-height: 120vh;
-        width: 100%;
+        width: auto;
     }
 }
